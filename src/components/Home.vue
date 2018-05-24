@@ -24,7 +24,8 @@
         getPostsFromSubreddit: 'getPostsFromSubreddit'
       }),
       async loadPosts () {
-        await this.getPostsFromSubreddit('javascript')
+        await this.getPostsFromSubreddit('vuejs')
+        console.log(this.posts)
       }
     }
   }
