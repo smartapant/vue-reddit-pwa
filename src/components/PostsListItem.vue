@@ -64,5 +64,6 @@
 
   .posts-list-item-comment-icon {
     line-height: 24px;
+    width: 20px;
   }
 </style>
