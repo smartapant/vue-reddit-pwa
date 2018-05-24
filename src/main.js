@@ -9,8 +9,12 @@ import 'material-design-icons-iconfont/dist/material-design-icons.css'
 
 import App from './App'
 import router from './router'
+import store from './store'
+import { sync } from 'vuex-router-sync'
 
 Vue.use(Vuetify)
+
+sync(store, router)
 
 Vue.config.productionTip = false
 
@@ -18,6 +22,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
 })
