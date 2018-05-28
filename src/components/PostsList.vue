@@ -1,9 +1,11 @@
 <template>
-  <div class="posts-list">
+  <div
+    class="posts-list"
+    v-infinite-scroll="loadMore"
+    infinite-scroll-distance="10"
+    :infinite-scroll-disabled="loading"
+  >
     <v-list
-      v-infinite-scroll="loadMore"
-      infinite-scroll-distance="10"
-      infinite-scroll-disabled="loading"
       three-line
       v-show="posts.length"
     >
@@ -13,7 +15,7 @@
         :post="post"
       />
     </v-list>
-   <posts-list-loader v-if="loading"/>
+    <posts-list-loader v-show="loading"/>
   </div>
 </template>
 
@@ -47,7 +49,9 @@
     },
     methods: {
       loadMore () {
-        console.log('load more!!!!')
+        if (!this.loading) {
+          this.$emit('loadMorePosts')
+        }
       }
     }
   }

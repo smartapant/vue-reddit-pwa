@@ -1,5 +1,9 @@
 <template>
-  <posts-list :posts="posts"/>
+  <posts-list
+    :posts="posts"
+    :loading="postsLoading"
+    @loadMorePosts="getMorePosts({prevPost: lastPost})"
+  />
 </template>
 
 <script>
@@ -13,19 +17,28 @@
     },
     computed: {
       ...mapGetters('reddit', {
-        posts: 'posts'
-      })
+        posts: 'posts',
+        postsLoading: 'isLoading'
+      }),
+      lastPost () {
+        return this.posts[this.posts.length - 1]
+      }
+    },
+    data () {
+      return {
+
+      }
     },
     mounted () {
       this.loadPosts()
     },
     methods: {
       ...mapActions('reddit', {
-        getPostsFromSubreddit: 'getPostsFromSubreddit'
+        getPostsFromSubreddit: 'getPostsFromSubreddit',
+        getMorePosts: 'getMorePosts'
       }),
       async loadPosts () {
         await this.getPostsFromSubreddit('vuejs')
-        console.log(this.posts)
       }
     }
   }

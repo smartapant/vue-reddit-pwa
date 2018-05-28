@@ -17,6 +17,11 @@ const RedditApi = (() => {
     async fetchPostsFromSubreddit (subreddit) {
       let response = await http.get(`/r/${subreddit}.json`)
       return redditCollectionToPosts(response)
+    },
+
+    async fetchMorePosts (prevPost, ignoreSubreddit = false) {
+      let response = await http.get(`/r/${ignoreSubreddit ? '' : prevPost.subreddit}.json?count=25&after=${prevPost.name}`)
+      return redditCollectionToPosts(response)
     }
   }
 })()

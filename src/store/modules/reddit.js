@@ -21,6 +21,9 @@ export default {
     },
     updatePosts (state, payload) {
       state.posts = payload
+    },
+    concatenatePosts (state, payload) {
+      state.posts = [...state.posts, ...payload]
     }
   },
   actions: {
@@ -30,6 +33,19 @@ export default {
       try {
         let posts = await RedditApi.fetchPostsFromSubreddit(subreddit)
         commit('updatePosts', posts)
+      } catch (err) {
+        commit('updateError', err.message)
+      } finally {
+        commit('updateIsLoading', false)
+      }
+    },
+
+    async getMorePosts ({commit}, {prevPost, ignoreSubreddit = false}) {
+      commit('updateError', null)
+      commit('updateIsLoading', true)
+      try {
+        let posts = await RedditApi.fetchMorePosts(prevPost, ignoreSubreddit)
+        commit('concatenatePosts', posts)
       } catch (err) {
         commit('updateError', err.message)
       } finally {
