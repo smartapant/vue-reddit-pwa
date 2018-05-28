@@ -4,6 +4,7 @@ import Vue from 'vue'
 
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
+import colors from 'vuetify/es5/util/colors'
 import 'babel-polyfill'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 
@@ -12,7 +13,11 @@ import router from './router'
 import store from './store'
 import { sync } from 'vuex-router-sync'
 
-Vue.use(Vuetify)
+Vue.use(Vuetify, {
+  theme: {
+    primary: colors.blue.lighten2
+  }
+})
 
 sync(store, router)
 

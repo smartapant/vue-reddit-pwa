@@ -2,7 +2,7 @@
   <v-toolbar
     app
     dark
-    color="blue lighten-2"
+    color="primary"
   >
     <v-toolbar-side-icon @click.stop="changeSidebarState"></v-toolbar-side-icon>
     <v-toolbar-title>Vue Reddit PWA</v-toolbar-title>

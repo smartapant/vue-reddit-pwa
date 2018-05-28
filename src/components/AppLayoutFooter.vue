@@ -1,7 +1,7 @@
 <template>
   <v-footer
-    color="blue lighten-2"
     app
+    color="primary"
   >
     <span class="white--text">&copy; 2018</span>
   </v-footer>
