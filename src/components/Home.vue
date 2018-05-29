@@ -16,7 +16,7 @@
       PostsList
     },
     computed: {
-      ...mapGetters('reddit', {
+      ...mapGetters('posts', {
         posts: 'posts',
         postsLoading: 'isLoading'
       }),
@@ -33,7 +33,7 @@
       this.loadPosts()
     },
     methods: {
-      ...mapActions('reddit', {
+      ...mapActions('posts', {
         getPostsFromSubreddit: 'getPostsFromSubreddit',
         getMorePosts: 'getMorePosts'
       }),

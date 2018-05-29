@@ -1,4 +1,4 @@
-import RedditApi from '@/api/RedditApi'
+import PostsApi from '@/api/PostsApi'
 
 export default {
   namespaced: true,
@@ -31,7 +31,7 @@ export default {
       commit('updateError', null)
       commit('updateIsLoading', true)
       try {
-        let posts = await RedditApi.fetchPostsFromSubreddit(subreddit)
+        let posts = await PostsApi.fetchPostsFromSubreddit(subreddit)
         commit('updatePosts', posts)
       } catch (err) {
         commit('updateError', err.message)
@@ -44,7 +44,7 @@ export default {
       commit('updateError', null)
       commit('updateIsLoading', true)
       try {
-        let posts = await RedditApi.fetchMorePosts(prevPost, ignoreSubreddit)
+        let posts = await PostsApi.fetchMorePosts(prevPost, ignoreSubreddit)
         commit('concatenatePosts', posts)
       } catch (err) {
         commit('updateError', err.message)
