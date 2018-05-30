@@ -2,7 +2,7 @@
   <posts-list
     :posts="posts"
     :loading="postsLoading"
-    @loadMorePosts="getMorePosts({prevPost: lastPost})"
+    @loadMorePosts="getMorePosts({prevPost: lastPost, subreddit: selectedSubreddit})"
   />
 </template>
 
@@ -20,13 +20,16 @@
         posts: 'posts',
         postsLoading: 'isLoading'
       }),
+      ...mapGetters('subreddits', [
+        'selectedSubreddit'
+      ]),
       lastPost () {
         return this.posts[this.posts.length - 1]
       }
     },
-    data () {
-      return {
-
+    watch: {
+      selectedSubreddit (val) {
+        this.loadPosts()
       }
     },
     mounted () {
@@ -38,7 +41,7 @@
         getMorePosts: 'getMorePosts'
       }),
       async loadPosts () {
-        await this.getPostsFromSubreddit('vuejs')
+        await this.getPostsFromSubreddit(this.selectedSubreddit)
       }
     }
   }

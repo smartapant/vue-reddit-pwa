@@ -40,11 +40,11 @@ export default {
       }
     },
 
-    async getMorePosts ({commit}, {prevPost, ignoreSubreddit = false}) {
+    async getMorePosts ({commit}, {prevPost, subreddit}) {
       commit('updateError', null)
       commit('updateIsLoading', true)
       try {
-        let posts = await PostsApi.fetchMorePosts(prevPost, ignoreSubreddit)
+        let posts = await PostsApi.fetchMorePosts(prevPost, subreddit)
         commit('concatenatePosts', posts)
       } catch (err) {
         commit('updateError', err.message)
