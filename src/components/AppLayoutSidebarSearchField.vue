@@ -7,10 +7,11 @@
           :items="items"
           :search-input.sync="search"
           v-model="select"
-          label="Choose subreddit"
+          label="Explore subreddits"
           autocomplete
           dense
           cache-items
+          @input="onSelectionChange"
         />
       </v-flex>
     </v-layout>
@@ -42,6 +43,7 @@
     },
     watch: {
       search (val) {
+        // TODO: Refactor
         this.$nextTick(() => {
           if (val && typeof this.select !== 'string') {
             this.querySelections(val)
@@ -52,6 +54,10 @@
     methods: {
       ...mapActions('search', [
         'searchSubreddits'
+      ]),
+      ...mapActions('subreddits', [
+        'selectSubreddit',
+        'saveSubreddit'
       ]),
       async querySelections (v) {
         await this.searchSubreddits(v)
@@ -68,6 +74,10 @@
             value: `${s.url}`
           }
         })
+      },
+      onSelectionChange (selection) {
+        this.saveSubreddit(selection)
+        this.selectSubreddit(selection)
       }
     }
   }

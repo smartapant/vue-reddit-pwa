@@ -5,20 +5,21 @@
     @input="onSidebarStateChanged"
   >
     <app-layout-sidebar-search-field />
-    <v-list dense>
-      <v-list-tile @click="">
-        <v-list-tile-action>
-          <v-icon>contact_mail</v-icon>
-        </v-list-tile-action>
-        <v-list-tile-content>
-          <v-list-tile-title>Contact</v-list-tile-title>
-        </v-list-tile-content>
+    <v-list dense v-if="savedSubreddits.length">
+      <v-subheader>Visited subreddits:</v-subheader>
+      <v-list-tile
+        @click=""
+        v-for="(subreddit, index) in savedSubreddits"
+        :key="index"
+      >
+        <a>{{subreddit}}</a>
       </v-list-tile>
     </v-list>
   </v-navigation-drawer>
 </template>
 
 <script>
+  import { mapGetters } from 'vuex'
   import AppLayoutSidebarSearchField from './AppLayoutSidebarSearchField.vue'
   export default {
     name: 'AppLayoutSidebar',
@@ -30,6 +31,11 @@
         type: Boolean,
         default: null
       }
+    },
+    computed: {
+      ...mapGetters('subreddits', [
+        'savedSubreddits'
+      ])
     },
     data () {
       return {
