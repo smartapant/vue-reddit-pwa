@@ -36,11 +36,13 @@
       this.loadPosts()
     },
     methods: {
-      ...mapActions('posts', {
-        getPostsFromSubreddit: 'getPostsFromSubreddit',
-        getMorePosts: 'getMorePosts'
-      }),
+      ...mapActions('posts', [
+        'getPostsFromSubreddit',
+        'getMorePosts',
+        'resetPosts'
+      ]),
       async loadPosts () {
+        this.resetPosts()
         await this.getPostsFromSubreddit(this.selectedSubreddit)
       }
     }

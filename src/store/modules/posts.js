@@ -27,6 +27,10 @@ export default {
     }
   },
   actions: {
+    resetPosts ({commit}) {
+      commit('updatePosts', [])
+    },
+
     async getPostsFromSubreddit ({commit}, subreddit) {
       commit('updateError', null)
       commit('updateIsLoading', true)
