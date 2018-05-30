@@ -1,8 +1,8 @@
 export default {
   namespaced: true,
   state: {
-    savedSubreddits: [],
-    selectedSubreddit: ''
+    savedSubreddits: localStorage.getItem('savedSubreddits') ? JSON.parse(localStorage.getItem('savedSubreddits')) : [],
+    selectedSubreddit: localStorage.getItem('selectedSubreddit') ? JSON.parse(localStorage.getItem('selectedSubreddit')) : ''
   },
   getters: {
     savedSubreddits: state => state.savedSubreddits,
@@ -11,9 +11,11 @@ export default {
   mutations: {
     updateSelectedSubreddit (state, payload) {
       state.selectedSubreddit = payload
+      localStorage.setItem('selectedSubreddit', JSON.stringify(state.selectedSubreddit))
     },
     updateSavedSubreddits (state, payload) {
       state.savedSubreddits = payload
+      localStorage.setItem('savedSubreddits', JSON.stringify(state.savedSubreddits))
     }
   },
   actions: {
