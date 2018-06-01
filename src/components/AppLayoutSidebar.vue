@@ -7,10 +7,14 @@
     <app-layout-sidebar-search-field />
     <v-list dense>
       <v-subheader>Visited subreddits:</v-subheader>
-      <v-list-tile @click="selectSubreddit('')">
+      <v-list-tile
+        :class="{'list__tile--highlighted': !selectedSubreddit}"
+        @click="selectSubreddit('')"
+      >
         <a>Frontpage</a>
       </v-list-tile>
       <v-list-tile
+        :class="{'list__tile--highlighted': subreddit === selectedSubreddit}"
         @click="selectSubreddit(subreddit)"
         v-for="(subreddit, index) in savedSubreddits"
         :key="index"
@@ -37,7 +41,8 @@
     },
     computed: {
       ...mapGetters('subreddits', [
-        'savedSubreddits'
+        'savedSubreddits',
+        'selectedSubreddit'
       ])
     },
     data () {
