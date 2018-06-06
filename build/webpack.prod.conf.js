@@ -104,7 +104,14 @@ const webpackConfig = merge(baseWebpackConfig, {
       filename: 'service-worker.js',
       staticFileGlobs: ['dist/**/*.{js,html,css,woff,woff2,ttf,eot}'],
       minify: true,
-      stripPrefix: 'dist/'
+      stripPrefix: 'dist/',
+      runtimeCaching: [
+
+        {
+          urlPattern: '/^https:\/\/reddit\.com/',
+          handler: 'networkFirst'
+        }
+      ]
     })
   ]
 })
