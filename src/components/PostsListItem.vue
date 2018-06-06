@@ -34,7 +34,7 @@
     },
     computed: {
       thumbnail () {
-        return this.isURL(this.post.thumbnail) ? this.post.thumbnail : 'http://icons.iconarchive.com/icons/uiconstock/socialmedia/256/Reddit-icon.png'
+        return this.isURL(this.post.thumbnail) ? this.post.thumbnail : 'https://icons.iconarchive.com/icons/uiconstock/socialmedia/256/Reddit-icon.png'
       },
       timeAgo () {
         const date = new Date(parseInt(this.post.created_utc, 10) * 1000)
