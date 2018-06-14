@@ -106,10 +106,8 @@ const webpackConfig = merge(baseWebpackConfig, {
       minify: true,
       stripPrefix: 'dist/',
       runtimeCaching: [
-
-        {
-          urlPattern: '/^https:\/\/reddit\.com/',
-          handler: 'networkFirst'
+        { urlPattern: /https:\/\/www\.reddit\.com\/*/,
+          handler: 'fastest'
         }
       ]
     })
