@@ -102,7 +102,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     new SWPrecacheWebpackPlugin({
       cacheId: 'vue-reddit-pwa',
       filename: 'service-worker.js',
-      staticFileGlobs: ['dist/**/*.{js,html,css,woff,woff2,ttf,eot}'],
+      staticFileGlobs: ['dist/**/*.{js,html,css,woff,woff2,ttf,eot,json}'],
       minify: true,
       stripPrefix: 'dist/',
       runtimeCaching: [
