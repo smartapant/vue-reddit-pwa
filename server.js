@@ -1,12 +1,12 @@
 const express = require('express')
-const serveStatic = require('serve-static')
+const expressStaticGzip = require("express-static-gzip");
 const path = require('path')
 const secure = require('express-force-https');
 
 const app = express()
 
 app.use(secure)
-app.use("/", serveStatic ( path.join (__dirname, '/dist') ) )
+app.use("/", expressStaticGzip ( path.join (__dirname, '/dist') ) )
 
 app.get('*', function (req, res) {
   res.sendFile(__dirname + '/dist/index.html')

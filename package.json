@@ -18,7 +18,7 @@
     "express-force-https": "^1.0.0",
     "material-design-icons-iconfont": "^3.0.3",
     "moment": "^2.22.1",
-    "serve-static": "^1.13.2",
+    "express-static-gzip": "^0.3.2",
     "vue": "^2.5.2",
     "vue-infinite-scroll": "^2.0.2",
     "vue-router": "^3.0.1",
