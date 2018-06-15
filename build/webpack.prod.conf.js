@@ -2,6 +2,7 @@
 
 const fs = require('fs')
 const path = require('path')
+const glob = require('glob-all')
 const utils = require('./utils')
 const webpack = require('webpack')
 const config = require('../config')
@@ -10,6 +11,7 @@ const baseWebpackConfig = require('./webpack.base.conf')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const PurgecssPlugin = require('purgecss-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
 const loadMinified = require('./load-minified')
@@ -43,6 +45,13 @@ const webpackConfig = merge(baseWebpackConfig, {
     // extract css into its own file
     new ExtractTextPlugin({
       filename: utils.assetsPath('css/[name].[contenthash].css')
+    }),
+    new PurgecssPlugin({
+      paths: glob.sync([
+        path.join(__dirname, './../src/index.html'),
+        path.join(__dirname, './../**/*.vue'),
+        path.join(__dirname, './../src/**/*.js')
+      ])
     }),
     // Compress extracted CSS. We are using this plugin so that possible
     // duplicated CSS from different components can be deduped.
@@ -98,6 +107,13 @@ const webpackConfig = merge(baseWebpackConfig, {
         ignore: ['.*']
       }
     ]),
+    new PurgecssPlugin({
+      paths: glob.sync([
+        path.join(__dirname, './../src/index.html'),
+        path.join(__dirname, './../**/*.vue'),
+        path.join(__dirname, './../src/**/*.js')
+      ])
+    }),
     // service worker caching
     new SWPrecacheWebpackPlugin({
       cacheId: 'vue-reddit-pwa',
