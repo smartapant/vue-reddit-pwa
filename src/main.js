@@ -2,8 +2,22 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 
-import Vuetify from 'vuetify'
-import 'vuetify/dist/vuetify.min.css'
+import 'vuetify/src/stylus/app.styl'
+import {
+  Vuetify,
+  VApp,
+  VGrid,
+  VNavigationDrawer,
+  VFooter,
+  VToolbar,
+  VList,
+  VSubheader,
+  VSelect,
+  VProgressCircular,
+  VIcon,
+  transitions
+} from 'vuetify'
+import { Ripple } from 'vuetify/es5/directives'
 import colors from 'vuetify/es5/util/colors'
 import 'babel-polyfill'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
@@ -14,6 +28,22 @@ import store from './store'
 import { sync } from 'vuex-router-sync'
 
 Vue.use(Vuetify, {
+  components: {
+    VApp,
+    VGrid,
+    VNavigationDrawer,
+    VFooter,
+    VToolbar,
+    VList,
+    VSubheader,
+    VSelect,
+    VProgressCircular,
+    VIcon,
+    transitions
+  },
+  directives: {
+    Ripple
+  },
   theme: {
     primary: colors.blue.lighten2
   }
