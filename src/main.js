@@ -21,6 +21,7 @@ import { Ripple } from 'vuetify/es5/directives'
 import colors from 'vuetify/es5/util/colors'
 import 'babel-polyfill'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
+import 'roboto-fontface/css/roboto/roboto-fontface.css'
 
 import App from './App'
 import router from './router'
