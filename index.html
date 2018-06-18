@@ -25,6 +25,17 @@
         for (var file of chunk.files) {
           if (file.match(/\.(js|css)$/)) { %>
     <link rel="<%= chunk.initial?'preload':'prefetch' %>" href="<%= htmlWebpackPlugin.files.publicPath + file %>" as="<%= file.match(/\.css$/)?'style':'script' %>"><% }}} %>
+    <%
+    for (var asset of webpack.assets) {
+    if (asset.name && asset.name.match(/(MaterialIcons-Regular|Roboto-Regular|Roboto-Medium)\..*\.(woff2)$/)) { %>
+    <link rel="preload"
+          href="<%= htmlWebpackPlugin.files.publicPath + asset.name %>"
+          as="font"
+          type="font/woff2"
+          crossorigin="anonymous"><%
+    }
+    }
+    %>
   </head>
   <body>
     <noscript>
