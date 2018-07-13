@@ -6,6 +6,7 @@ import 'vuetify/src/stylus/app.styl'
 import {
   Vuetify,
   VApp,
+  VBtn,
   VGrid,
   VNavigationDrawer,
   VFooter,
@@ -31,6 +32,7 @@ import { sync } from 'vuex-router-sync'
 Vue.use(Vuetify, {
   components: {
     VApp,
+    VBtn,
     VGrid,
     VNavigationDrawer,
     VFooter,

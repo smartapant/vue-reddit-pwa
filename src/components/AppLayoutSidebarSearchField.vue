@@ -8,7 +8,6 @@
           :search-input.sync="search"
           v-model="select"
           label="Explore subreddits"
-          autocomplete
           dense
           cache-items
           @input="onSelectionChange"

@@ -5,7 +5,16 @@
     color="primary"
   >
     <v-toolbar-side-icon @click.stop="changeSidebarState"></v-toolbar-side-icon>
-    <v-toolbar-title>Vue Reddit PWA {{subredditTitle}}</v-toolbar-title>
+    <v-toolbar-title>
+      <span >Vue Reddit PWA {{ subredditTitle }}</span>
+    </v-toolbar-title>
+    <div v-if="!isHome" class="back-button">
+      <router-link :to="{ path: '/' }">
+        <v-btn icon>
+          <v-icon>reply</v-icon>
+        </v-btn>
+      </router-link>
+    </div>
   </v-toolbar>
 </template>
 
@@ -26,6 +35,13 @@
       ]),
       subredditTitle () {
         return this.selectedSubreddit ? `- ${this.selectedSubreddit}` : ''
+      },
+      isHome () {
+        if (this.$route.name === 'Subreddit') {
+          return true
+        } else {
+          return false
+        }
       }
     },
     methods: {
@@ -37,5 +53,8 @@
 </script>
 
 <style>
-
+  .back-button {
+    position: absolute;
+    right: 10px;
+  }
 </style>
