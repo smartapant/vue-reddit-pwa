@@ -5,7 +5,7 @@ export default {
   state: {
     error: null,
     isLoading: false,
-    openedPost: localStorage.getItem('openedPost') ? JSON.parse(localStorage.getItem('openedPost')) : '',
+    selectedPost: localStorage.getItem('selectedPost') ? JSON.parse(localStorage.getItem('selectedPost')) : '',
     posts: [],
     comments: []
   },
@@ -13,13 +13,13 @@ export default {
     isLoading: state => state.isLoading,
     error: state => state.error,
     posts: state => state.posts,
-    openedPost: state => state.openedPost,
+    selectedPost: state => state.selectedPost,
     comments: state => state.comments
   },
   mutations: {
-    updateOpenedPost (state, payload) {
-      state.openedPost = payload
-      localStorage.setItem('openedPost', JSON.stringify(state.openedPost))
+    updateSelectedPost (state, payload) {
+      state.selectedPost = payload
+      localStorage.setItem('selectedPost', JSON.stringify(state.selectedPost))
     },
     updateError (state, payload) {
       state.error = payload
@@ -46,8 +46,8 @@ export default {
       commit('updateComments', [])
     },
 
-    setOpenedPost ({commit}, post) {
-      commit('updateOpenedPost', post)
+    setSelectedPost ({commit}, post) {
+      commit('updateSelectedPost', post)
     },
 
     async getPostsFromSubreddit ({commit}, subreddit) {
@@ -81,6 +81,7 @@ export default {
       commit('updateIsLoading', true)
       try {
         let comments = await PostsApi.fetchComments(post)
+        console.log(comments)
         commit('updateComments', comments)
       } catch (err) {
         commit('updateError', err.message)

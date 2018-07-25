@@ -20,6 +20,7 @@ export default {
   },
   actions: {
     selectSubreddit ({commit}, subreddit) {
+      console.log(subreddit)
       commit('updateSelectedSubreddit', subreddit)
     },
 

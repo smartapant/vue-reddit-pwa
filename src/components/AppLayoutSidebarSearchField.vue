@@ -44,6 +44,7 @@
       search (val) {
         // TODO: Refactor
         this.$nextTick(() => {
+          console.log(val)
           if (val && typeof this.select !== 'string') {
             this.querySelections(val)
           }
@@ -59,6 +60,7 @@
         'saveSubreddit'
       ]),
       async querySelections (v) {
+        console.log('1')
         await this.searchSubreddits(v)
         if (!this.searchError) {
           this.mapSubredditsToSelectItems(this.subredditSearchResults)
@@ -67,6 +69,7 @@
         }
       },
       mapSubredditsToSelectItems (subreddits) {
+        console.log('2')
         this.items = subreddits.map(s => {
           return {
             text: `${s.url} - ${s.title}`,

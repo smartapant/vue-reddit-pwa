@@ -37,11 +37,7 @@
         return this.selectedSubreddit ? `- ${this.selectedSubreddit}` : ''
       },
       isHome () {
-        if (this.$route.name === 'Subreddit') {
-          return true
-        } else {
-          return false
-        }
+        return this.$route.name === 'Subreddit'
       }
     },
     methods: {

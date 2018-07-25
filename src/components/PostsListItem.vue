@@ -50,14 +50,18 @@
     },
     methods: {
       ...mapActions('posts', [
-        'setOpenedPost'
+        'setSelectedPost'
       ]),
       isURL (str) {
         // eslint-disable-next-line no-useless-escape
         return /^(?:\w+:)?\/\/([^\s\.]+\.\S{2}|localhost[\:?\d]*)\S*$/.test(str)
       },
       openPost () {
-        this.setOpenedPost(this.post)
+        this.setSelectedPost(this.post)
+        window.open(
+          this.post.url,
+          'blank'
+        )
       }
     }
   }

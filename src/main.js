@@ -7,6 +7,7 @@ import {
   Vuetify,
   VApp,
   VBtn,
+  VCard,
   VGrid,
   VNavigationDrawer,
   VFooter,
@@ -14,6 +15,7 @@ import {
   VList,
   VSubheader,
   VSelect,
+  VStepper,
   VProgressCircular,
   VIcon,
   transitions
@@ -33,6 +35,7 @@ Vue.use(Vuetify, {
   components: {
     VApp,
     VBtn,
+    VCard,
     VGrid,
     VNavigationDrawer,
     VFooter,
@@ -40,6 +43,7 @@ Vue.use(Vuetify, {
     VList,
     VSubheader,
     VSelect,
+    VStepper,
     VProgressCircular,
     VIcon,
     transitions
