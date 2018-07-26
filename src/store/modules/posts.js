@@ -81,7 +81,6 @@ export default {
       commit('updateIsLoading', true)
       try {
         let comments = await PostsApi.fetchComments(post)
-        console.log(comments)
         commit('updateComments', comments)
       } catch (err) {
         commit('updateError', err.message)

@@ -6,6 +6,7 @@ import 'vuetify/src/stylus/app.styl'
 import {
   Vuetify,
   VApp,
+  VAutocomplete,
   VBtn,
   VCard,
   VGrid,
@@ -30,10 +31,14 @@ import App from './App'
 import router from './router'
 import store from './store'
 import { sync } from 'vuex-router-sync'
+import linkify from 'vue-linkify'
+
+Vue.directive('linkified', linkify)
 
 Vue.use(Vuetify, {
   components: {
     VApp,
+    VAutocomplete,
     VBtn,
     VCard,
     VGrid,

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Subreddit from '@/components/Subreddit'
-import PostsItem from '@/components/SelectedPost'
+import SelectedPost from '@/components/SelectedPost'
 
 Vue.use(Router)
 
@@ -15,8 +15,8 @@ export default new Router({
     },
     {
       path: '/:id',
-      name: 'Post',
-      component: PostsItem
+      name: 'SelectedPost',
+      component: SelectedPost
     }
   ]
 })

@@ -20,7 +20,13 @@
     <v-card-text>
       <div class="post-item__content post-item__url-content"
            v-if="selectedPost.post_hint && selectedPost.post_hint === 'image'">
-        <img :src="selectedPost.url"/>
+        <img class="post-item__image" :src="selectedPost.url"/>
+      </div>
+      <div class="post-item__content post-item__url-content"
+           v-if="selectedPost.post_hint && selectedPost.post_hint === 'link'">
+        <a :href="selectedPost.url">
+          {{ selectedPost.url }}
+        </a>
       </div>
       <div class="post-item__content post-item__text-content"
            v-if="!selectedPost.post_hint">
@@ -74,7 +80,7 @@
 
 <style>
   .card-header {
-    margin-left: 20px;
+    margin-left: 10px;
   }
 
   .card-header__statistics {
@@ -94,21 +100,33 @@
     margin-top: 10px;
   }
 
-  .post-item__text-content {
-    margin-left: 20px;
+  .post-item__text-content,  .post-item__url-content{
+    margin-left: 10px;
+  }
+
+  .post-item__image {
+    width: 80%;
+    height: 80%;
   }
 
   .selected-post-title {
     color: rgba(0,0,0,0.54);
   }
 
-  .v-stepper__content {
+  .v-stepper--vertical .v-stepper__step {
+    padding-left: 10px;
+  }
+
+  .v-stepper--vertical .v-stepper__content {
+    margin-left: 20px;
+    padding-top: 5px;
+    padding-left: 15px;
     border-left: 1px solid #b3d4fc;
   }
 
   .stepper-header {
     color: rgba(0,0,0,0.54);
-    margin-left: 20px;
+    margin-left: 10px;
     margin-top: 15px;
   }
 </style>

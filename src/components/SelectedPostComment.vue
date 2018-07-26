@@ -1,19 +1,21 @@
 <template>
   <div class="comments-item">
-    <div class="comments-reply" v-for="reply in comment.replies">
+    <div class="comments-reply">
       <v-stepper vertical>
-        <v-stepper-step editable step="1" complete>
+        <v-stepper-step editable step="index" complete>
           <div class="posts-list-item-metrics">
             <span>
               <span style="margin-right: 20px;">{{ comment.author }}</span>
               <v-icon>keyboard_arrow_up</v-icon> {{ comment.score }}
-              <span style="margin-left: 20px;">{{timeAgo}}</span>
+              <span style="margin-left: 20px;">{{ timeAgo }}</span>
             </span>
           </div>
         </v-stepper-step>
-        <v-stepper-content step="1">
-          <span>{{ comment.body }}</span>
-          <selected-post-comment :comment="reply"/>
+        <v-stepper-content step="index">
+          <span v-linkified>{{ comment.body }}</span>
+          <div v-for="reply in comment.replies">
+            <selected-post-comment :comment="reply"/>
+          </div>
         </v-stepper-content>
       </v-stepper>
     </div>
@@ -43,7 +45,5 @@
 <style>
   .comments-item {
     margin-top: 10px;
-  }
-  .comments-reply {
   }
 </style>
