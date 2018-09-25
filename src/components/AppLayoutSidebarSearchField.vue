@@ -2,13 +2,12 @@
   <v-container class="app-layout-sidebar-search-field">
     <v-layout>
       <v-flex>
-        <v-select
+        <v-autocomplete
           :loading="searchLoading"
           :items="items"
           :search-input.sync="search"
           v-model="select"
           label="Explore subreddits"
-          autocomplete
           dense
           cache-items
           @input="onSelectionChange"
